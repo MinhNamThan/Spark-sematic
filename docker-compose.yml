@@ -49,8 +49,7 @@ services:
         - ./data:/opt/spark-data
   demo-database:
     image: postgres:11.7-alpine
-    ports: 
-      - "5432:5432"
-    environment: 
+    ports:
+      - "5431:5432"
+    environment:
       - POSTGRES_PASSWORD=casa1234
-
