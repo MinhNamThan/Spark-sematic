@@ -9,6 +9,10 @@ from pyspark.ml.classification import NaiveBayes
 # import sparknlp
 from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 
+import time
+
+start = time.time()
+print("hello")
 # Create a SparkSession
 spark = SparkSession.builder.getOrCreate()
 
@@ -60,5 +64,8 @@ accuracy = evaluator.evaluate(predictions)
 print("Accuracy:", accuracy)
 
 # Save vectorizer_model and model
-vectorizer_model.save("../spark-apps/vectorizer_model")
-model.save("../spark-apps/model")
+vectorizer_model.write().overwrite().save("../spark-apps/vectorizer_model")
+model.write().overwrite().save("../spark-apps/model")
+
+end = time.time()
+print(end - start)
